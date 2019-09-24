@@ -1,3 +1,5 @@
+@extends('admin.master')
+@section('add')
 <form action="/form" method="POST" role="form">
 	@csrf
 	<legend>Form title</legend>
@@ -11,3 +13,4 @@
 
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
+@endsection
