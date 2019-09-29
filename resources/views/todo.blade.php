@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<a href="{{ route('add') }}" class="btn btn-success">Add</a>
+	<a href="{{ route('todos.create')}}" class="btn btn-success">Add</a>
 	<tbody>
 		@if(count($list) == 0)
 		Không có dữ liệu
@@ -26,7 +26,8 @@
 						<td>23/8/2019</td>
 						<td>23/8/2019</td>
 						<td>
-							<a style="display: inline-block; width: 67px;" href="#" class="btn btn-warning">Edit</a>
+							<a style="display: inline-block; width: 67px;" href="{{ route('todos.show', $item) }}" class="btn btn-success">Show</a>
+							<a style="display: inline-block; width: 67px;" href="{{ route('todos.edit', $item) }}" class="btn btn-warning">Edit</a>
 							<form style="display: inline-block;" action="#" method="post" accept-charset="utf-8">
 								@csrf
 								{{method_field('delete')}}

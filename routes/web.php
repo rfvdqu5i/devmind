@@ -11,28 +11,28 @@
 |
 */
 
-Route::get('greet', function(){
-	// return view('greeting', [
-	// 	'name' => 'Nguyễn Đức Anh',
-	// 	'age' => '22'
-	// ]);
 
-	return view('greeting')
-	->with([
-		'name' => 'Nguyễn Đức Anh',
-		'age' => '22'
-	]);
-});
 
-Route::get('/child', function(){
-	return view('admin.child');
-});
+// Route::prefix('home')->group(function() {
+// 	Route::get('/', 'HomeController@index');
+// 	Route::get('page/{page?}', 'HomeController@page');
+// });
 
-Route::get('/', function(){
-	$list = ['học html', 'học css', 'học php'];
-	return view('todo')->with('list', $list);
-});
 
-Route::get('/add', function(){
-	return view('add');
-})->name('add');
+
+// Route::prefix('admin')->namespace('Admin')->group(function() {
+// 	Route::get('/setting', 'SettingController@setting');
+// 	Route::get('/setting/{id}', 'SettingController@show');
+// 	Route::get('/user', 'UserController@show');
+// });
+
+// Route::group([
+// 	'prefix' => 'admin',
+// 	'namespace' => 'Admin'
+// ], function() {
+// 	Route::get('/setting', 'SettingController@setting');
+// 	Route::get('/setting/{id}', 'SettingController@show');
+// 	Route::get('/user', 'UserController@show');
+// });
+
+Route::resource('todos', 'TodoController');
