@@ -16,12 +16,6 @@
             <label class="control-label" for="todo">Mô tả:</label>
             <textarea name="todo" class="form-control"></textarea>
         </div>
-
-        <div class="form-group">
-            <div class="">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
     </form>
     <br>
     <a href="{{ route('todos.index') }}">Quay lại</a>
