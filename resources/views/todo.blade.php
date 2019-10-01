@@ -19,15 +19,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($list as $key => $item)
+					@foreach($list as $item)
 					<tr>
-						<td>{{ $key + 1 }}</td>
-						<td>{{ $item }}</td>
-						<td>23/8/2019</td>
-						<td>23/8/2019</td>
+						<td>{{ $item->id }}</td>
+						<td>{{ $item->todo }}</td>
+						<td>{{ $item->created_at }}</td>
+						<td>{{ $item->updated_at }}</td>
 						<td>
-							<a style="display: inline-block; width: 67px;" href="{{ route('todos.show', $item) }}" class="btn btn-success">Show</a>
-							<a style="display: inline-block; width: 67px;" href="{{ route('todos.edit', $item) }}" class="btn btn-warning">Edit</a>
+							<a style="display: inline-block; width: 67px;" href="{{ route('todos.show', $item->id) }}" class="btn btn-success">Show</a>
+							<a style="display: inline-block; width: 67px;" href="{{ route('todos.edit', $item->id) }}" class="btn btn-warning">Edit</a>
 							<form style="display: inline-block;" action="#" method="post" accept-charset="utf-8">
 								@csrf
 								{{method_field('delete')}}

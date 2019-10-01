@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class TodoController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $list = ['Học HTML', 'Học PHP', 'Học Laravel', 'Học SQL'];
+        $list = DB::table('todos')->get();
         return view('todo')->with('list', $list);
     }
 
