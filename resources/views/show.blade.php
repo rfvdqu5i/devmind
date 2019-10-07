@@ -6,15 +6,24 @@
         @csrf
         {{method_field('put')}}
         <div class="form-group">
-            <legend>Edit todo</legend>
+            <legend>Xem chi tiết</legend>
         </div>
         <div class="form-group">
-            <label class="control-label" for="todo">Todo:</label>
-            <input name="todo" type="text" class="form-control" id="todo" value="{{ $item }}">
+            <label class="control-label" for="todo">Tiêu đề:</label>
+            <input name="todo" type="text" class="form-control" id="todo" value="{{ $todo->title }}">
         </div>
         <div class="form-group">
             <label class="control-label" for="todo">Mô tả:</label>
-            <textarea name="todo" class="form-control"></textarea>
+            <textarea name="todo" class="form-control">{{ $todo->content }}</textarea>
+        </div>
+        <div class="form-group">
+            <select name="" class="form-control">
+                @if($todo->status == 1)
+                    <option value="1">Đã làm</option>
+                @else
+                    <option value="0">Chưa làm</option>
+                @endif
+            </select>
         </div>
     </form>
     <br>

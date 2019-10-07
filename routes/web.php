@@ -11,28 +11,6 @@
 |
 */
 
-
-
-// Route::prefix('home')->group(function() {
-// 	Route::get('/', 'HomeController@index');
-// 	Route::get('page/{page?}', 'HomeController@page');
-// });
-
-
-
-// Route::prefix('admin')->namespace('Admin')->group(function() {
-// 	Route::get('/setting', 'SettingController@setting');
-// 	Route::get('/setting/{id}', 'SettingController@show');
-// 	Route::get('/user', 'UserController@show');
-// });
-
-// Route::group([
-// 	'prefix' => 'admin',
-// 	'namespace' => 'Admin'
-// ], function() {
-// 	Route::get('/setting', 'SettingController@setting');
-// 	Route::get('/setting/{id}', 'SettingController@show');
-// 	Route::get('/user', 'UserController@show');
-// });
-
 Route::resource('todos', 'TodoController');
+
+Route::resource('users', 'UserController');

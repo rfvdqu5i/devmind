@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Todo;
-class TodoController extends Controller
+use App\User;
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::latest()->get();
-        return view('todo', ['todos' => $todos]);
+        $users = User::latest()->get();
+        return view('user.user', ['users' => $users]);
     }
 
     /**
@@ -25,7 +26,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('user.create');
     }
 
     /**
@@ -36,12 +37,11 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        Todo::create([
-            'title'   => $request->title,
-            'content' => $request->content,
-            'status' => $request->status
+        User::create([
+            'name'   => $request->name,
+            'email' => $request->email
         ]);
-        return view('todo');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -52,8 +52,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        $todo = Todo::where('id', $id)->first();
-        return view('show')->with(['todo' => $todo]);
+        $user = User::where('id', $id)->first();
+        return view('user.show')->with(['user' => $user]);
     }
 
     /**
@@ -64,8 +64,8 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        $todo = Todo::where('id', $id)->first();
-        return view('edit', ['todo' => $todo]);
+        $user = User::where('id', $id)->first();
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -77,12 +77,11 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Todo::where('id', $id)->update([
-            'title'   => $request->title,
-            'content' => $request->content,
-            'status' => $request->status
+        User::where('id', $id)->update([
+            'name'   => $request->name,
+            'email' => $request->email
         ]);
-        return redirect()->route('todos.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -93,8 +92,8 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-         Todo::destroy($id);
+        User::destroy($id);
         // Chuyển hướng về trang danh sách
-        return redirect()->route('todos.index');
+        return redirect()->route('users.index');
     }
 }

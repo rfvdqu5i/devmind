@@ -4,7 +4,7 @@
 <div class="container">
 	<a href="{{ route('todos.create')}}" class="btn btn-success">Add</a>
 	<tbody>
-		@if(count($list) == 0)
+		@if(count($todos) == 0)
 		Không có dữ liệu
 		@else
 		<div class="table-responsive">
@@ -12,27 +12,30 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Todo</th>
+						<th>Tiêu đề</th>
+						<th>Nội dung</th>
+						<th>Trạng thái</th>
 						<th>Created at</th>
-						<th>Updated at</th>
-						<th>Action</th>
+						<th>Hoạt động</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($list as $item)
+					@foreach($todos as $item)
 					<tr>
 						<td>{{ $item->id }}</td>
-						<td>{{ $item->todo }}</td>
+						<td>{{ $item->title }}</td>
+						<td>{{ $item->content }}</td>
+						<td><input type="checkbox" @if($item->status == 1) checked @endif data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></td>
 						<td>{{ $item->created_at }}</td>
-						<td>{{ $item->updated_at }}</td>
 						<td>
 							<a style="display: inline-block; width: 67px;" href="{{ route('todos.show', $item->id) }}" class="btn btn-success">Show</a>
 							<a style="display: inline-block; width: 67px;" href="{{ route('todos.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-							<form style="display: inline-block;" action="#" method="post" accept-charset="utf-8">
+							{{-- <form style="display: inline-block;" action="{{ route('todos.destroy', $item->id) }}" method="post" accept-charset="utf-8">
 								@csrf
 								{{method_field('delete')}}
-								<button type="submit" class="btn btn-danger">Delete</button>
-							</form>
+								<button  class="btn btn-danger delete">Delete</button>
+							</form> --}}
+							<a style="display: inline-block; width: 67px;" class="btn btn-warning delete">Xóa</a>
 						</td>
 					</tr>
 					@endforeach

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TodosTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,12 +12,10 @@ class TodosTableSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-        for ($i = 0 ; $i < 200; $i++){
-            \DB::table('todos')->insert([
-                'user_id' => '1',
-                'todo'    => $faker->text(20),
-                'content' => $faker->text(200),
-                'status'  => '1',
+        for ($i = 0 ; $i < 20; $i++){
+            \DB::table('users')->insert([
+                'name' => $faker->name,
+        		'email' => $faker->unique()->safeEmail,
                 'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s')
             ]);
